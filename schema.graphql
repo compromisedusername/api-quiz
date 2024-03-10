@@ -17,7 +17,7 @@ type Answer {
   isCorrect: Boolean!
 }
 
-# Zapytania
+# Queries
 
 query {
   allQuizzes {
@@ -36,7 +36,7 @@ query {
   }
 }
 
-# Mutacje
+# Mutations
 
 mutation {
   createQuiz(title: "Mój pierwszy quiz", description: "Opis mojego pierwszego quizu") {

@@ -13,6 +13,7 @@ exports.Question = void 0;
 const typeorm_1 = require("typeorm");
 const quiz_entity_1 = require("./quiz.entity");
 const answer_entity_1 = require("./answer.entity");
+const sortinganswer_1 = require("./sortinganswer");
 let Question = class Question {
 };
 exports.Question = Question;
@@ -40,7 +41,7 @@ __decorate([
     __metadata("design:type", Array)
 ], Question.prototype, "answers", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => SortingAnswer, (sortingAnswer) => sortingAnswer.question),
+    (0, typeorm_1.OneToMany)(() => sortinganswer_1.SortingAnswer, (sortingAnswer) => sortingAnswer.question),
     __metadata("design:type", Array)
 ], Question.prototype, "sortingAnswers", void 0);
 exports.Question = Question = __decorate([
