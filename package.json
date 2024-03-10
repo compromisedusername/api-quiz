@@ -26,6 +26,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.2",
     "apollo-server-express": "^3.13.0",
+    "collect.js": "^4.36.1",
     "dotenv": "^16.4.5",
     "graphql-tools": "^9.0.1",
     "pg": "^8.11.3",
