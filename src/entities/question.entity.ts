@@ -3,6 +3,14 @@ import { Quiz } from './quiz.entity';
 import { Answer } from './answer.entity';
 import { SortingAnswer } from './sortinganswer';
 
+
+enum QuestionType {
+  SINGLE_CORRECT = 'SINGLE_CORRECT',
+  MULTIPLE_CORRECT = 'MULTIPLE_CORRECT',
+  SORTING = 'SORTING',
+  PLAIN_TEXT = 'PLAIN_TEXT'
+}
+
 @Entity()
 export class Question {
   @PrimaryGeneratedColumn()
