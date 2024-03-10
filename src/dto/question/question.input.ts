@@ -1,4 +1,6 @@
 import { IsNotEmpty, IsString, IsEnum, IsArray } from 'class-validator';
+import { AnswerInput } from '../answer/answer.input';
+import { SortingAnswerInput } from '../sortinganswer/sortingaswer.input';
 
 export class QuestionInput {
     @IsNotEmpty()

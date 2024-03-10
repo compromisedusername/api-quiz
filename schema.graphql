@@ -1,0 +1,47 @@
+type Quiz {
+  id: Int!
+  title: String!
+  description: String
+  questions: [Question!]!
+}
+
+type Question {
+  id: Int!
+  text: String!
+  answers: [Answer!]!
+}
+
+type Answer {
+  id: Int!
+  text: String!
+  isCorrect: Boolean!
+}
+
+# Zapytania
+
+query {
+  allQuizzes {
+    id
+    title
+    description
+    questions {
+      id
+      text
+      answers {
+        id
+        text
+        isCorrect
+      }
+    }
+  }
+}
+
+# Mutacje
+
+mutation {
+  createQuiz(title: "Mój pierwszy quiz", description: "Opis mojego pierwszego quizu") {
+    id
+    title
+    description
+  }
+}
