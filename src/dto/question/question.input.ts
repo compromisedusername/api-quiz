@@ -1,3 +1,5 @@
+import { IsNotEmpty, IsString, IsEnum, IsArray } from 'class-validator';
+
 export class QuestionInput {
     @IsNotEmpty()
     @IsString()
