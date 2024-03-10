@@ -35,7 +35,7 @@ async createQuiz(@Args('createQuizInput') createQuizInput: CreateQuizInput) {
 
   @Query(() => Quiz, { name: 'quiz' }) 
   async findOne(@Args('id', { type: () => Int }) id: number) { 
-    return this.quizService.findOne(id);
+    return this.quizService.findById(id);
   }
 
   @Mutation(() => Quiz)
