@@ -15,13 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.QuizResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const uuid_1 = require("uuid");
-const quiz_service_1 = require("./../services/quiz.service");
-const quiz_entity_1 = require("../../entities/quiz.entity");
-const createquiz_input_1 = require("../../dto/quiz/createquiz.input");
-const updatequiz_input_1 = require("../../dto/quiz/updatequiz.input");
-const question_entity_1 = require("../../entities/question.entity");
-const sortinganswer_1 = require("../../entities/sortinganswer");
-const answer_entity_1 = require("../../entities/answer.entity");
+const quiz_service_1 = require("./quiz.service");
+const quiz_entity_1 = require("./../entities/quiz.entity");
+const createquiz_input_1 = require("./../dto/quiz/createquiz.input");
+const updatequiz_input_1 = require("./../dto/quiz/updatequiz.input");
+const question_entity_1 = require("./../entities/question.entity");
+const sortinganswer_1 = require("./../entities/sortinganswer");
+const answer_entity_1 = require("./../entities/answer.entity");
 let QuizResolver = class QuizResolver {
     constructor(quizService) {
         this.quizService = quizService;

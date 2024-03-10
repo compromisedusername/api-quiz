@@ -2,14 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { Query, Mutation, Resolver, Args, Int } from '@nestjs/graphql';
 import { v4 as uuid } from 'uuid'; 
 
-import { QuizService } from './../services/quiz.service';
-import { Quiz } from 'src/entities/quiz.entity';
-import { CreateQuizInput } from 'src/dto/quiz/createquiz.input';
-import { UpdateQuizInput } from 'src/dto/quiz/updatequiz.input';
-import { Question } from 'src/entities/question.entity';
-import { QuestionInput } from 'src/dto/question/question.input';
-import { SortingAnswer } from 'src/entities/sortinganswer';
-import { Answer } from 'src/entities/answer.entity';
+import { QuizService } from './quiz.service';
+import { Quiz } from './../entities/quiz.entity';
+import { CreateQuizInput } from './../dto/quiz/createquiz.input';
+import { UpdateQuizInput } from './../dto/quiz/updatequiz.input';
+import { Question } from './../entities/question.entity';
+import { QuestionInput } from './../dto/question/question.input';
+import { SortingAnswer } from './../entities/sortinganswer';
+import { Answer } from './../entities/answer.entity';
 
 @Resolver(() => Quiz) 
 export class QuizResolver {

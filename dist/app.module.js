@@ -13,6 +13,8 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const graphql_1 = require("@nestjs/graphql");
 const quiz_resolver_1 = require("./quiz/resolvers/quiz.resolver");
+const user_module_1 = require("./user/user.module");
+const quiz_module_1 = require("./quiz/quiz.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -23,6 +25,8 @@ exports.AppModule = AppModule = __decorate([
                 driver: apollo_1.ApolloDriver,
                 autoSchemaFile: 'schema.graphql',
             }),
+            user_module_1.UserModule,
+            quiz_module_1.QuizModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, quiz_resolver_1.QuizResolver],

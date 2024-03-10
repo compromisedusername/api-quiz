@@ -1,24 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-
-import { Quiz } from './../../entities/quiz.entity';
+import { QuizRepository } from './quiz.repository';
+import { Quiz } from './../entities/quiz.entity';
 
 @Injectable()
 export class QuizService {
-  findByIds(questionsIds: any) {
-    throw new Error('Method not implemented.');
+  constructor(
+    @InjectRepository(QuizRepository)
+    private readonly quizRepository: QuizRepository,
+  ) {}
+
+  findByIds(questionsIds: any) { 
+    throw new Error('Method not implemented.'); //todo
   }
   findOne(id: number) {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'); //todo
   }
   remove(id: number) {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'); //todo
   }
-  constructor(
+/*   constructor(
     @InjectRepository(Quiz)
     private readonly quizRepository: Repository<Quiz>,
-  ) {}
+  ) {} */
 
   async findAll(): Promise<Quiz[]> {
     return await this.quizRepository.find();
