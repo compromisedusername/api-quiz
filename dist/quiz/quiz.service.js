@@ -15,9 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.QuizService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
-const quiz_entity_1 = require("./../../entities/quiz.entity");
+const quiz_repository_1 = require("./quiz.repository");
 let QuizService = class QuizService {
+    constructor(quizRepository) {
+        this.quizRepository = quizRepository;
+    }
     findByIds(questionsIds) {
         throw new Error('Method not implemented.');
     }
@@ -26,9 +28,6 @@ let QuizService = class QuizService {
     }
     remove(id) {
         throw new Error('Method not implemented.');
-    }
-    constructor(quizRepository) {
-        this.quizRepository = quizRepository;
     }
     async findAll() {
         return await this.quizRepository.find();
@@ -53,7 +52,7 @@ let QuizService = class QuizService {
 exports.QuizService = QuizService;
 exports.QuizService = QuizService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(quiz_entity_1.Quiz)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(0, (0, typeorm_1.InjectRepository)(quiz_repository_1.QuizRepository)),
+    __metadata("design:paramtypes", [quiz_repository_1.QuizRepository])
 ], QuizService);
 //# sourceMappingURL=quiz.service.js.map

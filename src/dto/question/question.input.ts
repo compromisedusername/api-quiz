@@ -1,6 +1,7 @@
 import { IsNotEmpty, IsString, IsEnum, IsArray } from 'class-validator';
 import { AnswerInput } from '../answer/answer.input';
 import { SortingAnswerInput } from '../sortinganswer/sortingaswer.input';
+import { QuestionType } from './../../entities/question.enum';
 
 export class QuestionInput {
     @IsNotEmpty()

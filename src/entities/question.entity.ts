@@ -2,14 +2,10 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'ty
 import { Quiz } from './quiz.entity';
 import { Answer } from './answer.entity';
 import { SortingAnswer } from './sortinganswer';
+import { QuestionType } from './question.enum';
 
 
-enum QuestionType {
-  SINGLE_CORRECT = 'SINGLE_CORRECT',
-  MULTIPLE_CORRECT = 'MULTIPLE_CORRECT',
-  SORTING = 'SORTING',
-  PLAIN_TEXT = 'PLAIN_TEXT'
-}
+
 
 @Entity()
 export class Question {

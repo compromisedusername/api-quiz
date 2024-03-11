@@ -8,10 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.QuizModule = void 0;
 const common_1 = require("@nestjs/common");
+const quiz_service_1 = require("./quiz.service");
+const quiz_resolver_1 = require("./quiz.resolver");
+const quiz_controller_1 = require("./quiz.controller");
+const graphql_1 = require("@nestjs/graphql");
 let QuizModule = class QuizModule {
 };
 exports.QuizModule = QuizModule;
 exports.QuizModule = QuizModule = __decorate([
-    (0, common_1.Module)({})
+    (0, common_1.Module)({
+        imports: [graphql_1.GraphQLModule.forRoot({
+                autoSchemaFile: 'schema.graphql',
+                debug: true,
+                playground: true,
+            }),],
+        providers: [quiz_service_1.QuizService, quiz_resolver_1.QuizResolver],
+        controllers: [quiz_controller_1.QuizController],
+    })
 ], QuizModule);
 //# sourceMappingURL=quiz.module.js.map

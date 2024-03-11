@@ -39,7 +39,7 @@ let QuizResolver = class QuizResolver {
         return this.quizService.findAll();
     }
     async findOne(id) {
-        return this.quizService.findOne(id);
+        return this.quizService.findById(id);
     }
     async updateQuiz(updateQuizInput) {
         return this.quizService.update(updateQuizInput.id, updateQuizInput);
