@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { QuizRepository } from './quiz.repository';
 import { Quiz } from './../entities/quiz.entity';
+import { automapper } from './../automapper';
+import { QuizDto } from 'src/dto/quiz/quiz.dto';
 
 @Injectable()
 export class QuizService {
@@ -25,25 +27,29 @@ export class QuizService {
     private readonly quizRepository: Repository<Quiz>,
   ) {} */
 
-  async findAll(): Promise<Quiz[]> {
-    return await this.quizRepository.find();
+  async findAll(): Promise<QuizDto[]> {
+    const quizzes = await this.quizRepository.find();
+    return automapper.mapArray(quizzes, QuizDto); // Mapowanie tablicy
   }
 
-  async findById(id: number): Promise<Quiz> {
-    return await this.quizRepository.findOne({ where: { id } });
+ 
+  async findById(id: number): Promise<QuizDto> {
+    const quiz = await this.quizRepository.findOne({ where: { id } });
+    return automapper.map(quiz, QuizDto); 
+  }
+  
+  async create(quizDto: QuizDto): Promise<QuizDto> {
+    const quiz = automapper.map(quizDto, Quiz); // Mapowanie DTO na encję
+    const createdQuiz = await this.quizRepository.save(quiz);
+    return automapper.map(createdQuiz, QuizDto);
   }
 
-  async create(quiz: Quiz): Promise<Quiz> {
-    return await this.quizRepository.save(quiz);
-  }
-
-  async update(id: number, quiz: Quiz): Promise<Quiz> {
+  async update(id: number, quizDto: QuizDto): Promise<QuizDto> {
     const existingQuiz = await this.quizRepository.findOne({ where: { id } });
-    if (!existingQuiz) {
-      throw new Error('Quiz not found');
-    }
 
-    return await this.quizRepository.save({ ...existingQuiz, ...quiz });
+    const updatedQuiz = automapper.map(quizDto, Quiz, existingQuiz); // Mapowanie aktualnych i nowych danych
+    const savedQuiz = await this.quizRepository.save(updatedQuiz);
+    return automapper.map(savedQuiz, QuizDto); 
   }
 
   async delete(id: number): Promise<void> {

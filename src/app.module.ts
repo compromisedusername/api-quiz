@@ -1,4 +1,4 @@
-import { ApolloDriver } from '@nestjs/apollo';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,9 +9,10 @@ import { QuizModule } from './quiz/quiz.module';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
+    GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: 'schema.graphql',
+      autoSchemaFile: 'true',//autoSchemaFile: 'schema.graphql',  
+      typePaths: ['./**/*.graphql'],
     }),
     UserModule,
     QuizModule,
