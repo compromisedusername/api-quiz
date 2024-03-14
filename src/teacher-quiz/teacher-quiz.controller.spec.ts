@@ -1,20 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { QuizController } from './quiz.controller';
-import { QuizService } from './quiz.service';
-import { QuestionDto } from 'src/dto/question/question.dto';
-import { Question } from 'src/entities/question.entity';
+import { TeacherQuizController } from './teacher-quiz.controller';
+import { Question } from '../entities/question.entity';
+import { QuizController } from '../quiz/quiz.controller';
+import { QuizService } from '../quiz/quiz.service';
 
-describe('QuizController', () => {
-  let controller: QuizController;
-  let service: QuizService;
+describe('TeacherQuizController', () => {
+  let controller: TeacherQuizController
+  let service: QuizService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [QuizController],
+      controllers: [TeacherQuizController],
       providers: [QuizService],
     }).compile();
 
-    controller = module.get<QuizController>(QuizController);
+    controller = module.get<TeacherQuizController>(TeacherQuizController);
     service = module.get<QuizService>(QuizService);
   });
 

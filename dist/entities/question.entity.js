@@ -8,13 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Question = void 0;
 const typeorm_1 = require("typeorm");
 const quiz_entity_1 = require("./quiz.entity");
 const answer_entity_1 = require("./answer.entity");
 const sortinganswer_1 = require("./sortinganswer");
+const question_enum_1 = require("./question.enum");
 let Question = class Question {
 };
 exports.Question = Question;
@@ -29,9 +29,9 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({
         type: 'enum',
-        enum: QuestionType,
+        enum: question_enum_1.QuestionType,
     }),
-    __metadata("design:type", typeof (_a = typeof QuestionType !== "undefined" && QuestionType) === "function" ? _a : Object)
+    __metadata("design:type", String)
 ], Question.prototype, "questionType", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => quiz_entity_1.Quiz, (quiz) => quiz.questions),
