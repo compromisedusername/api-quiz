@@ -1,8 +1,8 @@
-import { QuizRepository } from './quiz.repository';
+import { Repository } from 'typeorm';
 import { Quiz } from './../entities/quiz.entity';
 export declare class QuizService {
     private readonly quizRepository;
-    constructor(quizRepository: QuizRepository);
+    constructor(quizRepository: Repository<Quiz>);
     findByIds(questionsIds: any): void;
     findOne(id: number): void;
     remove(id: number): void;

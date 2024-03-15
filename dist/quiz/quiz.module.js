@@ -11,19 +11,21 @@ const common_1 = require("@nestjs/common");
 const quiz_service_1 = require("./quiz.service");
 const quiz_resolver_1 = require("./quiz.resolver");
 const quiz_controller_1 = require("./quiz.controller");
-const graphql_1 = require("@nestjs/graphql");
+const teacher_quiz_controller_1 = require("../teacher-quiz/teacher-quiz.controller");
+const student_quiz_controller_1 = require("../student-quiz/student-quiz.controller");
+const typeorm_1 = require("@nestjs/typeorm");
+const quiz_repository_1 = require("./quiz.repository");
+const quiz_entity_1 = require("../entities/quiz.entity");
 let QuizModule = class QuizModule {
 };
 exports.QuizModule = QuizModule;
 exports.QuizModule = QuizModule = __decorate([
     (0, common_1.Module)({
-        imports: [graphql_1.GraphQLModule.forRoot({
-                autoSchemaFile: 'schema.graphql',
-                debug: true,
-                playground: true,
-            }),],
-        providers: [quiz_service_1.QuizService, quiz_resolver_1.QuizResolver],
-        controllers: [quiz_controller_1.QuizController],
+        imports: [
+            typeorm_1.TypeOrmModule.forFeature([quiz_entity_1.Quiz])
+        ],
+        providers: [quiz_service_1.QuizService, quiz_resolver_1.QuizResolver, quiz_repository_1.QuizRepository],
+        controllers: [quiz_controller_1.QuizController, teacher_quiz_controller_1.TeacherQuizController, student_quiz_controller_1.StudentQuizController],
     })
 ], QuizModule);
 //# sourceMappingURL=quiz.module.js.map

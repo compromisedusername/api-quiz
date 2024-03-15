@@ -6,10 +6,8 @@ import { Quiz } from './../entities/quiz.entity';
 
 @Injectable()
 export class QuizService {
-  constructor(
-    @InjectRepository(QuizRepository)
-    private readonly quizRepository: QuizRepository,
-  ) {}
+  constructor(@InjectRepository(Quiz) private readonly quizRepository: Repository<Quiz>) {}
+
 
   findByIds(questionsIds: any) { 
     throw new Error('Method not implemented.'); //todo

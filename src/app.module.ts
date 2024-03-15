@@ -1,24 +1,39 @@
-import { ApolloDriver } from '@nestjs/apollo';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule, GqlModuleOptions } from '@nestjs/graphql';
 import { QuizResolver } from './quiz/quiz.resolver';
-import { UserModule } from './user/user.module';
 import { QuizModule } from './quiz/quiz.module';
 import { StudentQuizController } from './student-quiz/student-quiz.controller';
 import { TeacherQuizController } from './teacher-quiz/teacher-quiz.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
+import { QuizService } from './quiz/quiz.service';
 
 @Module({
-  imports: [GraphQLModule.forRoot({
+  imports: [GraphQLModule.forRoot<ApolloDriverConfig>({
+    driver: ApolloDriver,
     autoSchemaFile: 'schema.graphql', 
-    debug: true,
     playground: true, 
 }),
-    UserModule,
+TypeOrmModule.forRoot({
+  keepConnectionAlive: true,
+  type: 'postgres', 
+  host: 'localhost',
+  port: 5534,
+  username: 'postgres',
+  password: 'admin',
+  database: 'quiz.db',
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  synchronize: true, // For development, disable for production
+}),
+
     QuizModule,
   ],
-  controllers: [AppController, StudentQuizController, TeacherQuizController],
-  providers: [AppService, QuizResolver],
+  controllers: [AppController],
+  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource){}
+}
