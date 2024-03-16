@@ -25,8 +25,8 @@ TypeOrmModule.forRoot({
   username: 'postgres',
   password: 'admin',
   database: 'quiz.db',
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  synchronize: true, // For development, disable for production
+  autoLoadEntities: true,
+  synchronize: true, 
 }),
 
     QuizModule,
