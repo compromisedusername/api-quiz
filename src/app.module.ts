@@ -23,7 +23,7 @@ TypeOrmModule.forRoot({
   host: 'localhost',
   port: 5432,
   username: 'postgres',
-  password: 'admin',
+  password: 'postgres',
   database: 'quiz_db',
   autoLoadEntities: true,
   synchronize: true, 

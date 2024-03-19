@@ -18,10 +18,7 @@ export class QuizService {
   remove(id: number) {
     throw new Error('Method not implemented.'); //todo
   }
-/*   constructor(
-    @InjectRepository(Quiz)
-    private readonly quizRepository: Repository<Quiz>,
-  ) {} */
+
 
   async findAll(): Promise<Quiz[]> {
     return await this.quizRepository.find();
