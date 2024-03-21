@@ -6,7 +6,6 @@ export class QuestionDto {
     id: number;
     text: string;
     questionType: QuestionType;
-    quiz: number;
     answers: AnswerDto[];
     sortingAnswer: SortingAnswerDto[];
   }

@@ -4,7 +4,11 @@ import { InputType, Field } from '@nestjs/graphql'; // Usunięto import Int, pon
 
 @InputType()
 export class CreateQuizInput {
+    @IsNotEmpty()
+    @IsString()
+    @Field(() => String)
+    name: string;
     @IsArray()
     questions: QuestionInput[];
-  name: any;
+    
 }

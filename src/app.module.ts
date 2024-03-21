@@ -2,15 +2,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GraphQLModule, GqlModuleOptions } from '@nestjs/graphql';
-import { QuizResolver } from './quiz/quiz.resolver';
+import { GraphQLModule } from '@nestjs/graphql';
 import { QuizModule } from './quiz/quiz.module';
-import { StudentQuizController } from './student-quiz/student-quiz.controller';
-import { TeacherQuizController } from './teacher-quiz/teacher-quiz.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { QuizService } from './quiz/quiz.service';
-
+import { QuestionModule } from './question/question.module';
 @Module({
   imports: [GraphQLModule.forRoot<ApolloDriverConfig>({
     driver: ApolloDriver,
@@ -31,6 +27,7 @@ TypeOrmModule.forRoot({
 }),
 
     QuizModule,
+    QuestionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -9,6 +9,7 @@ import { QuestionType } from './question.enum';
 
 @Entity()
 export class Question {
+  
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -23,7 +24,7 @@ export class Question {
   questionType: QuestionType;
 
   @ManyToOne(() => Quiz, (quiz) => quiz.questions)
-  quiz: Quiz;
+  quizId: number;
 
   @OneToMany(() => Answer, (answer) => answer.question)
   answers: Answer[];
