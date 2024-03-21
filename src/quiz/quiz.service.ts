@@ -9,15 +9,7 @@ export class QuizService {
   constructor(@InjectRepository(Quiz) private readonly quizRepository: Repository<Quiz>) {}
 
 
-  findByIds(questionsIds: any) { 
-    throw new Error('Method not implemented.'); //todo
-  }
-  findOne(id: number) {
-    throw new Error('Method not implemented.'); //todo
-  }
-  remove(id: number) {
-    throw new Error('Method not implemented.'); //todo
-  }
+
 
 
   async findAll(): Promise<Quiz[]> {
@@ -46,3 +38,14 @@ export class QuizService {
   }
   
 }
+
+
+
+
+
+
+
+
+
+
+

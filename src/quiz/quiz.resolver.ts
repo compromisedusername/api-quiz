@@ -1,32 +1,42 @@
 import { Injectable } from '@nestjs/common';
 import { Query, Mutation, Resolver, Args, Int } from '@nestjs/graphql';
-import { v4 as uuid } from 'uuid'; 
-
+import { QuestionService } from './../question/question.service'
 import { QuizService } from './quiz.service';
 import { Quiz } from './../entities/quiz.entity';
 import { CreateQuizInput } from './../dto/quiz/createquiz.input';
 import { UpdateQuizInput } from './../dto/quiz/updatequiz.input';
 import { Question } from './../entities/question.entity';
 import { QuestionInput } from './../dto/question/question.input';
-import { SortingAnswer } from './../entities/sortinganswer';
+import { SortingAnswer } from '../entities/sortinganswer.entity';
 import { Answer } from './../entities/answer.entity';
-
+let currentQuizId = 1;
 @Resolver(() => Quiz) 
 export class QuizResolver {
-  constructor(private readonly quizService: QuizService) {}
-
+  constructor(private readonly quizService: QuizService, private readonly questionService: QuestionService) {}
   @Mutation(() => Quiz)
-async createQuiz(@Args('createQuizInput') createQuizInput: CreateQuizInput) {
-  const questions = createQuizInput.questions.map(mapQuestionInputToQuestion); 
-
-  const newQuiz = { 
-    id: uuid(),
-    name: createQuizInput.name,
-    questions
-  };
-
-  return await this.quizService.create(newQuiz);
-}
+  async createQuiz(@Args('createQuizInput') createQuizInput: CreateQuizInput) {
+    const newQuiz = new Quiz();
+    newQuiz.name = createQuizInput.name;
+  
+    const createdQuiz = await this.quizService.create(newQuiz); // Save quiz first
+  
+    // Create and associate questions (assuming QuestionInput has necessary data)
+    const questions = createQuizInput.questions.map(async (questionInput) => {
+      const question = new Question(/* populate question properties from questionInput */);
+      question.quiz = createdQuiz; // Set reference to the newly created quiz
+      return await this.questionService.create(question); // Save each question
+    });
+  
+    // Wait for all questions to be created (using Promise.all)
+    const createdQuestions = await Promise.all(questions);
+  
+    // Update quiz with created questions (optional, depending on your needs)
+    createdQuiz.questions = createdQuestions;
+    await this.quizService.update(createdQuiz.id, createdQuiz); // Save updated quiz
+  
+    return createdQuiz;
+  }
+  
 
   @Query(() => [Quiz], { name: 'quizzes' }) 
   async findAll() {
@@ -45,37 +55,10 @@ async createQuiz(@Args('createQuizInput') createQuizInput: CreateQuizInput) {
 
   @Mutation(() => Quiz)
   async removeQuiz(@Args('id', { type: () => Int }) id: number) {
-    return this.quizService.remove(id);
+    return this.quizService.delete(id);
   }
 
   
 }
 
-function mapQuestionInputToQuestion(input: QuestionInput): Question {
-  const question = new Question();
-  question.text = input.text;
-  question.questionType = input.questionType;
-
-  if (input.answers) {
-    question.answers = input.answers.map((answerInput) => {
-      const answer = new Answer();
-      answer.text = answerInput.text;
-      answer.isCorrect = answerInput.isCorrect;
-      answer.question = question; // Ustawienie relacji
-      return answer;
-    });
-  }
-
-  if (input.sortingAnswers) {
-    question.sortingAnswers = input.sortingAnswers.map((sortingAnswerInput) => {
-      const sortingAnswer = new SortingAnswer();
-      sortingAnswer.answerText = sortingAnswerInput.answerText;
-      sortingAnswer.correctOrder = sortingAnswerInput.correctOrder;
-      sortingAnswer.question = question; // Ustawienie relacji
-      return sortingAnswer;
-    });
-  }
-
-  return question;
-}
-
+ 

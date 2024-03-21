@@ -68,7 +68,7 @@ describe('QuizController', () => {
   describe('deleteQuiz', () => {
     it('should delete a quiz by id', async () => {
       await controller.deleteQuiz(1);
-      const deletedQuiz = await service.findOne(1);
+      const deletedQuiz = await service.findById(1);
       expect(deletedQuiz).toBeUndefined();
     });
   });

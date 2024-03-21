@@ -11,8 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateQuizInput = void 0;
 const class_validator_1 = require("class-validator");
-class CreateQuizInput {
-}
+const graphql_1 = require("@nestjs/graphql");
+let CreateQuizInput = class CreateQuizInput {
+};
 exports.CreateQuizInput = CreateQuizInput;
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
@@ -23,4 +24,7 @@ __decorate([
     (0, class_validator_1.IsArray)(),
     __metadata("design:type", Array)
 ], CreateQuizInput.prototype, "questions", void 0);
+exports.CreateQuizInput = CreateQuizInput = __decorate([
+    (0, graphql_1.InputType)()
+], CreateQuizInput);
 //# sourceMappingURL=createquiz.input.js.map

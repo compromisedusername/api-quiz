@@ -32,5 +32,5 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsArray)(),
     __metadata("design:type", Array)
-], QuestionInput.prototype, "sortingAnswers", void 0);
+], QuestionInput.prototype, "sortingAnswer", void 0);
 //# sourceMappingURL=question.input.js.map

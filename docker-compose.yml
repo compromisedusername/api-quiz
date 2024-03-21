@@ -30,7 +30,7 @@ services:
     environment:
       - PORT=${POSTGRES_PORT}
     ports: 
-      - '3002:3002'
+      - '3001:3001'
     depends_on:
       - db
     volumes: 
@@ -46,13 +46,7 @@ services:
       - '5051:80'
     depends_on:
       - db
-  server:
-    build:
-      context: .
-    environment:
-      NODE_ENV: production
-    ports:
-      - 3001:3001
+  
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to

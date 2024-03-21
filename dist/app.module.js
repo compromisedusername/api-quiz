@@ -28,18 +28,18 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [graphql_1.GraphQLModule.forRoot({
                 driver: apollo_1.ApolloDriver,
-                autoSchemaFile: 'schema.graphql',
+                autoSchemaFile: true,
                 playground: true,
             }),
             typeorm_1.TypeOrmModule.forRoot({
                 keepConnectionAlive: true,
                 type: 'postgres',
-                host: 'localhost',
+                host: 'postgres',
                 port: 5432,
                 username: 'postgres',
                 password: 'postgres',
-                database: 'quiz_db',
-                autoLoadEntities: true,
+                database: 'postgres',
+                entities: [__dirname + '/**/*.entity{.ts,.js}'],
                 synchronize: true,
             }),
             quiz_module_1.QuizModule,],

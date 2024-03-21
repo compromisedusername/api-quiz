@@ -2,7 +2,9 @@ import { IsNotEmpty, IsString, IsEnum, IsArray } from 'class-validator';
 import { AnswerInput } from '../answer/answer.input';
 import { SortingAnswerInput } from '../sortinganswer/sortingaswer.input';
 import { QuestionType } from './../../entities/question.enum';
+import { InputType } from '@nestjs/graphql';
 
+@InputType()
 export class QuestionInput {
     @IsNotEmpty()
     @IsString()
@@ -16,5 +18,5 @@ export class QuestionInput {
     answers: AnswerInput[];
   
     @IsArray()
-    sortingAnswers?: SortingAnswerInput[];
+    sortingAnswer: SortingAnswerInput[];
   }

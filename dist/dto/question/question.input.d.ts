@@ -5,5 +5,5 @@ export declare class QuestionInput {
     text: string;
     questionType: QuestionType;
     answers: AnswerInput[];
-    sortingAnswers?: SortingAnswerInput[];
+    sortingAnswer: SortingAnswerInput[];
 }

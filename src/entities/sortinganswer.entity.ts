@@ -12,6 +12,6 @@ export class SortingAnswer {
   @Column()
   correctOrder: number;
 
-  @ManyToOne(() => Question, (question) => question.sortingAnswers)
+  @ManyToOne(() => Question, (question) => question.sortingAnswer)
   question: Question;
 }

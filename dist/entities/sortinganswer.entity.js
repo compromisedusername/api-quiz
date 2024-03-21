@@ -28,10 +28,10 @@ __decorate([
     __metadata("design:type", Number)
 ], SortingAnswer.prototype, "correctOrder", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => question_entity_1.Question, (question) => question.sortingAnswers),
+    (0, typeorm_1.ManyToOne)(() => question_entity_1.Question, (question) => question.sortingAnswer),
     __metadata("design:type", question_entity_1.Question)
 ], SortingAnswer.prototype, "question", void 0);
 exports.SortingAnswer = SortingAnswer = __decorate([
     (0, typeorm_1.Entity)()
 ], SortingAnswer);
-//# sourceMappingURL=sortinganswer.js.map
+//# sourceMappingURL=sortinganswer.entity.js.map

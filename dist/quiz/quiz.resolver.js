@@ -20,7 +20,7 @@ const quiz_entity_1 = require("./../entities/quiz.entity");
 const createquiz_input_1 = require("./../dto/quiz/createquiz.input");
 const updatequiz_input_1 = require("./../dto/quiz/updatequiz.input");
 const question_entity_1 = require("./../entities/question.entity");
-const sortinganswer_1 = require("./../entities/sortinganswer");
+const sortinganswer_entity_1 = require("../entities/sortinganswer.entity");
 const answer_entity_1 = require("./../entities/answer.entity");
 let QuizResolver = class QuizResolver {
     constructor(quizService) {
@@ -31,9 +31,10 @@ let QuizResolver = class QuizResolver {
         const newQuiz = {
             id: (0, uuid_1.v4)(),
             name: createQuizInput.name,
-            questions
+            questions,
         };
-        return await this.quizService.create(newQuiz);
+        const createdQuiz = await this.quizService.create(newQuiz);
+        return createdQuiz;
     }
     async findAll() {
         return this.quizService.findAll();
@@ -45,7 +46,7 @@ let QuizResolver = class QuizResolver {
         return this.quizService.update(updateQuizInput.id, updateQuizInput);
     }
     async removeQuiz(id) {
-        return this.quizService.remove(id);
+        return this.quizService.delete(id);
     }
 };
 exports.QuizResolver = QuizResolver;
@@ -100,9 +101,9 @@ function mapQuestionInputToQuestion(input) {
             return answer;
         });
     }
-    if (input.sortingAnswers) {
-        question.sortingAnswers = input.sortingAnswers.map((sortingAnswerInput) => {
-            const sortingAnswer = new sortinganswer_1.SortingAnswer();
+    if (input.sortingAnswer) {
+        question.sortingAnswer = input.sortingAnswer.map((sortingAnswerInput) => {
+            const sortingAnswer = new sortinganswer_entity_1.SortingAnswer();
             sortingAnswer.answerText = sortingAnswerInput.answerText;
             sortingAnswer.correctOrder = sortingAnswerInput.correctOrder;
             sortingAnswer.question = question;

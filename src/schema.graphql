@@ -8,6 +8,7 @@ type Quiz {
 type Question {
   id: Int!
   text: String!
+  questionType: QuestionType! 
   answers: [Answer!]!
 }
 
@@ -15,6 +16,13 @@ type Answer {
   id: Int!
   text: String!
   isCorrect: Boolean!
+  sortingAnswer: SortingAnswer[] 
+}
+
+type SortingAnswer {  
+  id: Int!
+  order: Int!  
+  answer: Answer!  
 }
 
 # Queries
@@ -27,6 +35,7 @@ query {
     questions {
       id
       text
+      questionType  # Added questionType field
       answers {
         id
         text
@@ -39,7 +48,7 @@ query {
 # Mutations
 
 mutation {
-  createQuiz(title: "Mój pierwszy quiz", description: "Opis mojego pierwszego quizu") {
+  createQuiz(name: "Mój pierwszy quiz", description: "Opis mojego pierwszego quizu") {
     id
     title
     description

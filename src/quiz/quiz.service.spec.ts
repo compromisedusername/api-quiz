@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { QuizService } from './quiz.service';
-import { QuizRepository } from './quiz.repository'; // Dopasuj nazwę pliku, jeśli jest inna
+import { QuizRepository } from './quiz.repository'; 
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Quiz } from '../entities/quiz.entity';
 import { Question } from 'src/entities/question.entity';
@@ -15,7 +15,7 @@ describe('QuizService', () => {
       providers: [
         QuizService,
         {
-          provide: getRepositoryToken(QuizRepository), 
+          provide: QuizRepository, 
           useValue: {
             find: jest.fn(),
             findOne: jest.fn(),

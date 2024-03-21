@@ -1,4 +1,7 @@
+import { InputType } from '@nestjs/graphql';
 import { IsNotEmpty, IsString, IsBoolean } from 'class-validator';
+
+@InputType()
 export class AnswerInput {
     @IsNotEmpty()
     @IsString()

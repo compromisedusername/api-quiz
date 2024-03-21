@@ -6,5 +6,5 @@ export declare class QuestionDto {
     text: string;
     questionType: QuestionType;
     answers: AnswerDto[];
-    sortingAnswers?: SortingAnswerDto[];
+    sortingAnswer: SortingAnswerDto[];
 }

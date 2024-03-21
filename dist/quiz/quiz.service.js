@@ -21,15 +21,6 @@ let QuizService = class QuizService {
     constructor(quizRepository) {
         this.quizRepository = quizRepository;
     }
-    findByIds(questionsIds) {
-        throw new Error('Method not implemented.');
-    }
-    findOne(id) {
-        throw new Error('Method not implemented.');
-    }
-    remove(id) {
-        throw new Error('Method not implemented.');
-    }
     async findAll() {
         return await this.quizRepository.find();
     }

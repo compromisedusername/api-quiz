@@ -1,9 +1,9 @@
 import { StudentQuizController } from './student-quiz.controller';
 import { Test, TestingModule } from '@nestjs/testing';
-import { QuizController } from './../quiz/quiz.controller';
-import { QuizService } from './../quiz/quiz.service';
-import { QuestionDto } from './../dto/question/question.dto';
-import { Question } from './../entities/question.entity';
+import { QuizController } from '../quiz/quiz.controller';
+import { QuizService } from '../quiz/quiz.service';
+import { QuestionDto } from '../dto/question/question.dto';
+import { Question } from '../entities/question.entity';
 
 describe('StudentQuizController', () => {
   let controller: StudentQuizController

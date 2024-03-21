@@ -1,8 +1,16 @@
+FROM node:20 AS builder 
 
-FROM node:20
 WORKDIR /app
+
 COPY package*.json ./
-RUN npm install 
-COPY . . 
-RUN npm run build 
+
+RUN npm install
+
+FROM node:alpine AS runner 
+
+WORKDIR /app
+
+COPY . .
+
 CMD [ "npm", "run", "start:dev" ]
+

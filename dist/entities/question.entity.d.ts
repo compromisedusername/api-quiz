@@ -1,6 +1,6 @@
 import { Quiz } from './quiz.entity';
 import { Answer } from './answer.entity';
-import { SortingAnswer } from './sortinganswer';
+import { SortingAnswer } from './sortinganswer.entity';
 import { QuestionType } from './question.enum';
 export declare class Question {
     id: number;
@@ -8,5 +8,5 @@ export declare class Question {
     questionType: QuestionType;
     quiz: Quiz;
     answers: Answer[];
-    sortingAnswers: SortingAnswer[];
+    sortingAnswer: SortingAnswer[];
 }

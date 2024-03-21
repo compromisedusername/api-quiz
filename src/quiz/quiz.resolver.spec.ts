@@ -36,11 +36,12 @@ describe('QuizResolver', () => {
   describe('createQuiz', () => {
     it('should create a new quiz', async () => {
       const newQuizInput = {
+        id: 1,
         name: 'New Quiz',
         questions: [],
       };
       const createdQuiz = {
-        id: 1234, // Zamiast '1234' 
+        id: 2, // Zamiast '1234' 
         name: 'New Quiz',
         questions: [],
       };

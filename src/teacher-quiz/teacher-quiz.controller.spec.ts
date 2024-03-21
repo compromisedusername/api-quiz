@@ -3,6 +3,7 @@ import { TeacherQuizController } from './teacher-quiz.controller';
 import { Question } from '../entities/question.entity';
 import { QuizController } from '../quiz/quiz.controller';
 import { QuizService } from '../quiz/quiz.service';
+import { RootTestModule } from '../tests/root.test.module'
 
 describe('TeacherQuizController', () => {
   let controller: TeacherQuizController
@@ -68,7 +69,7 @@ describe('TeacherQuizController', () => {
   describe('deleteQuiz', () => {
     it('should delete a quiz by id', async () => {
       await controller.deleteQuiz(1);
-      const deletedQuiz = await service.findOne(1);
+      const deletedQuiz = await service.findById(1);
       expect(deletedQuiz).toBeUndefined();
     });
   });

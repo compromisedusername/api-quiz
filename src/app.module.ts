@@ -14,18 +14,19 @@ import { QuizService } from './quiz/quiz.service';
 @Module({
   imports: [GraphQLModule.forRoot<ApolloDriverConfig>({
     driver: ApolloDriver,
-    autoSchemaFile: 'schema.graphql', 
+    autoSchemaFile: true, 
+    introspection: true,
     playground: true, 
 }),
 TypeOrmModule.forRoot({
   keepConnectionAlive: true,
   type: 'postgres', 
-  host: 'localhost',
+  host: 'postgres',
   port: 5432,
   username: 'postgres',
   password: 'postgres',
-  database: 'quiz_db',
-  autoLoadEntities: true,
+  database: 'postgres',
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: true, 
 }),
 

@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
 import { Quiz } from './quiz.entity';
 import { Answer } from './answer.entity';
-import { SortingAnswer } from './sortinganswer';
+import { SortingAnswer } from './sortinganswer.entity';
 import { QuestionType } from './question.enum';
 
 
@@ -29,5 +29,5 @@ export class Question {
   answers: Answer[];
 
   @OneToMany(() => SortingAnswer, (sortingAnswer) => sortingAnswer.question)
-  sortingAnswers: SortingAnswer[];
+  sortingAnswer: SortingAnswer[];
 }

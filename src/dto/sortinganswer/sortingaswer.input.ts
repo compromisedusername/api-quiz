@@ -1,5 +1,8 @@
+import { InputType } from '@nestjs/graphql';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Question } from 'src/entities/question.entity';
 
+@InputType()
 export class SortingAnswerInput {
     @IsNotEmpty()
     @IsString()
@@ -8,4 +11,6 @@ export class SortingAnswerInput {
     @IsNotEmpty()
     @IsNumber()
     correctOrder: number;
+
+    question: Question;
   }
