@@ -25,32 +25,4 @@ type SortingAnswer {
   answer: Answer!  
 }
 
-# Queries
 
-query {
-  allQuizzes {
-    id
-    title
-    description
-    questions {
-      id
-      text
-      questionType  # Added questionType field
-      answers {
-        id
-        text
-        isCorrect
-      }
-    }
-  }
-}
-
-# Mutations
-
-mutation {
-  createQuiz(name: "Mój pierwszy quiz", description: "Opis mojego pierwszego quizu") {
-    id
-    title
-    description
-  }
-}

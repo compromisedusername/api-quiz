@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { Quiz } from 'src/entities/quiz.entity';
 import { QuizResolver } from './quiz.resolver';
+import { UpdateQuizInput } from 'src/dto/quiz/updatequiz.input';
 @Controller('quiz')
 export class QuizController {
 

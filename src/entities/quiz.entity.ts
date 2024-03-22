@@ -14,6 +14,7 @@ export class Quiz {
   @Column()
   name: string;
 
+  @Field(()=>[Question])
   @OneToMany(() => Question, (question) => question.quizId)
   questions: Question[];
 }

@@ -5,7 +5,7 @@ import { QuestionType } from './../../entities/question.enum';
 export class QuestionDto {
     id: number;
     text: string;
-    questionType: QuestionType;
+    questionType: string;
     answers: AnswerDto[];
     sortingAnswer: SortingAnswerDto[];
   }

@@ -1,7 +1,8 @@
 import { IsInt, IsString, IsOptional, IsArray } from 'class-validator';
-import { QuestionInput } from '../question/question.input';
 import { Question } from 'src/entities/question.entity';
 import { Field, InputType, Int } from '@nestjs/graphql';
+import { CreateQuestionInput } from '../question/createquestion.input';
+import { UpdateQuestionInput } from '../question/updatequestion.input';
 
 @InputType()
 export class UpdateQuizInput {
@@ -13,7 +14,8 @@ export class UpdateQuizInput {
     name: string;
   
     @IsArray()
-    questions: Question[];
+    @Field(()=>[UpdateQuestionInput])
+    questions: UpdateQuestionInput[];
  }
   
   

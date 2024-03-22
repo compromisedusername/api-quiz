@@ -1,5 +1,4 @@
 import { IsNotEmpty, IsString, IsArray, IsEnum } from 'class-validator';
-import { QuestionInput } from '../question/question.input';
 import { InputType, Field, Int } from '@nestjs/graphql'; // Usunięto import Int, ponieważ nie jest używany w tej klasie DTO
 import { QuestionType } from '../../entities/question.enum';
 import { SortingAnswerInput } from '../sortinganswer/sortingaswer.input';
@@ -13,11 +12,13 @@ export class UpdateQuestionInput {
 
     @IsNotEmpty()
     @IsString()
+    @Field((()=>String))
     text: string;
 
     @IsNotEmpty()
-    @IsEnum(QuestionType)
-    questionType: QuestionType;
+    @IsString()
+    @Field((()=>String))
+    questionType: string;
 
     @Field(() => Int)
     @IsNotEmpty()
