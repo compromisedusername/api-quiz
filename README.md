@@ -10,8 +10,8 @@ API quiz in Nestjs, Graphql, Postgres. Containerized in Docker.
 $ docker compose build
 $ docker compose up
 ```
-API is available on localhost:3001
-Graphql playground on localhost:3001/graphql
-Pgadmin on localhost:5051
+#API is available on localhost:3001
+#Graphql playground on localhost:3001/graphql
+#Pgadmin on localhost:5051
 
 
