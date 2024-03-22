@@ -2,7 +2,7 @@
 
 ## Description
 
-API quiz in Nestjs, Graphql, Postgres. Running in Docker.
+API quiz in Nestjs, Graphql, Postgres. Containerized in Docker.
 
 ## Running the app
 
